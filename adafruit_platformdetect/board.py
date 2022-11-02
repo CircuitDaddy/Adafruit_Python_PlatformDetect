@@ -432,6 +432,17 @@ class Board:
         if "sun20iw1p1" in board_value:
             return boards.ALLWINER_D1
         return None
+    
+    #add to ln 435 in board.py
+	def _DART_MX8M_PLUS(self) -> Optional[str]: 
+	"""Try to detect the id for DART_MX8M_PLUS board or device"""                                                     
+        board_value =  self.detector.get_device_model()    
+        board = None                                           
+	    if "dart_mx8m_plus" in board_value.lower():             
+            board = boards.DART_MC8M_PLUS                        
+	    elif chip_id == chips.IMX8MP                     
+            board_id = self._dart_mx8m_plus_id()            
+	    return board_id
 
     def _pine64_id(self) -> Optional[str]:
         """Try to detect the id for Pine64 board or device."""
@@ -579,6 +590,13 @@ class Board:
             board = boards.SIEMENS_SIMATIC_IOT2050_BASIC
         return board
 
+    #added to ln 595
+	@property
+    def any_dart_mx8m_plus_board(self):
+        """check wheter the current board is a DART_MX8M_PLUS"""
+        return self.id in boards._DART_MX8M_PLUS_IDS
+
+    
     @property
     def any_siemens_simatic_iot2000(self) -> bool:
         """Check whether the current board is a SIEMENS SIMATIC IOT2000 Gateway."""
