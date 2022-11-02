@@ -63,6 +63,8 @@ class Board:
 
         if chip_id == chips.H3:
             board_id = self._armbian_id() or self._allwinner_variants_id()
+        elif chip_id == chips.IMX8MX:
+            board_id = self._dart_mx8m_plus_id()
         elif chip_id == chips.BCM2XXX:
             board_id = self._pi_id()
         elif chip_id == chips.AM33XX:
@@ -433,16 +435,14 @@ class Board:
             return boards.ALLWINER_D1
         return None
     
-    #add to ln 435 in board.py
-	def _DART_MX8M_PLUS(self) -> Optional[str]: 
+        #add to include IMX8MP board detection
+    def _dart_mx8m_plus_id(self) -> Optional[str]: 
         """Try to detect the id for DART_MX8M_PLUS board or device"""                                                     
-        board_value =  self.detector.get_device_model()    
+        compatible =  self.detector.get_device_compatible()    
         board = None                                           
-        if "dart_mx8m_plus" in board_value.lower():             
-            board = boards.DART_MC8M_PLUS                        
-        elif chip_id == chips.IMX8MP:                     
-            board_id = self._dart_mx8m_plus_id()            
-	return board_id
+        if compatible and "imx8mp" in compatible:             
+            board = boards.DART_MX8M_PLUS                                   
+	return board
 
     def _pine64_id(self) -> Optional[str]:
         """Try to detect the id for Pine64 board or device."""
