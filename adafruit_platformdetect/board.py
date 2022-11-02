@@ -435,14 +435,14 @@ class Board:
     
     #add to ln 435 in board.py
 	def _DART_MX8M_PLUS(self) -> Optional[str]: 
-	"""Try to detect the id for DART_MX8M_PLUS board or device"""                                                     
+        """Try to detect the id for DART_MX8M_PLUS board or device"""                                                     
         board_value =  self.detector.get_device_model()    
         board = None                                           
-	    if "dart_mx8m_plus" in board_value.lower():             
+        if "dart_mx8m_plus" in board_value.lower():             
             board = boards.DART_MC8M_PLUS                        
-	    elif chip_id == chips.IMX8MP                     
+        elif chip_id == chips.IMX8MP:                     
             board_id = self._dart_mx8m_plus_id()            
-	    return board_id
+	return board_id
 
     def _pine64_id(self) -> Optional[str]:
         """Try to detect the id for Pine64 board or device."""
