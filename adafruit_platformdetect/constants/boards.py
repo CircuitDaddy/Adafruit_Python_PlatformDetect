@@ -3,6 +3,10 @@
 # SPDX-License-Identifier: MIT
 
 """Definition of boards and/or ids"""
+
+# Variscite Boards       
+DART-MX8M-PLUS = "DART-MX8M-PLUS"
+
 # Allow for aligned constant definitions:
 BEAGLEBONE = "BEAGLEBONE"
 BEAGLEBONE_BLACK = "BEAGLEBONE_BLACK"
@@ -511,7 +515,9 @@ _PI_REV_CODES = {
     ),
     RASPBERRY_PI_ZERO_2_W: ("902120", "2902120"),
 }
-
+# Variscite Boards                                                                                                                                                                           
+ _DART-MX8M-PLUS_DEV_IDS = (DART-MX8M-PLUS,)   
+    
 # Onion omega boards
 _ONION_OMEGA_BOARD_IDS = (ONION_OMEGA, ONION_OMEGA2)
 
